@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Световая фаза фотосинтеза</title>
+  <link rel="stylesheet" href="./static/style.css?v=46" />
+</head>
+<body>
+  <main class="stand">
+    <section class="stand-card" aria-label="Интерактивная модель световой фазы фотосинтеза">
+      <header>
+        <h1>Световая фаза фотосинтеза</h1>
+        <p class="definition"><b>Световая фаза</b> — этап фотосинтеза, на котором энергия света превращается в энергию АТФ и НАДФ·Н. Одновременно из воды выделяется кислород.</p>
+      </header>
+
+      <div class="controls top-controls">
+        <button id="playButton" class="play" type="button">Пауза</button>
+        <button id="previousButton" type="button">Назад</button>
+        <button id="nextButton" type="button">Далее</button>
+        <label class="path-select">Перенос электронов
+          <select id="pathSelect" aria-label="Тип переноса электронов"><option>Линейный</option><option disabled>Циклический — скоро</option></select>
+        </label>
+      </div>
+
+      <section class="stage-picker">
+        <div><b id="sceneCount">Пункт 1 из 7</b></div>
+        <input id="stageSlider" type="range" min="1" max="7" value="1" aria-label="Выбрать этап процесса" />
+      </section>
+
+      <section class="step-copy">
+        <b id="stageLabel">Пункт 1 из 7</b>
+        <div id="captionCard"><p id="sceneText"></p><code id="equation"></code></div>
+      </section>
+
+      <section class="diagram-section">
+        <p class="diagram-label">Мембрана тилакоида: путь энергии и частиц</p>
+        <h2 id="sceneTitle" class="sr-only">Солнце бьёт по Фотосистеме II</h2>
+
+        <div id="model" class="model textbook-model step-1" aria-live="polite">
+          <svg class="model-art" viewBox="0 0 1000 590" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <!-- Два прямых листка мембраны: скрипт раскладывает по ним отдельные фосфолипиды. -->
+              <path id="outerLeafletPath" d="M78 187H922"/>
+              <path id="innerLeafletPath" d="M78 223H922"/>
+              <g id="phospholipidIcon">
+                <circle class="phospholipid-head" cx="0" cy="0" r="6.4"/>
+                <!-- Ножки заканчиваются свободно: они не соединяются ни друг с другом, ни с соседним липидом. -->
+                <path class="phospholipid-tail" d="M-3.2 5C-5.5 7.8-5.4 10.7-2.8 14.5M3.2 5C5.5 7.8 5.4 10.7 2.8 14.5"/>
+              </g>
+              <marker id="arrowGold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#d4aa26"/></marker>
+              <marker id="arrowBlue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L12 6L0 12z" fill="#2f9bd2"/></marker>
+              <marker id="arrowEnergy" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L12 6L0 12z" fill="#efb542"/></marker>
+              <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d04f48"/></marker>
+            </defs>
+            <text x="78" y="54" class="zone-title">СТРОМА</text><text x="78" y="72" class="zone-small">низкая концентрация H⁺</text>
+            <text x="88" y="450" class="lumen-title">ВНУТРИ ТИЛАКОИДА</text><text x="98" y="468" class="zone-small">высокая концентрация H⁺</text>
+            <path class="membrane-outline" d="M78 205H922"/>
+            <g id="phospholipidLayer" class="phospholipid-layer"></g>
+          </svg>
+
+          <button class="object photosystem ps2" data-key="ps2"><span class="antenna a1"></span><span class="antenna a2"></span><span class="antenna a3"></span><i class="core">P680</i><strong>Фотосистема II</strong></button>
+          <button class="object oec" data-key="oec"><i>OEC</i><strong>расщепляет<br>воду</strong></button>
+          <button class="object courier pq" data-key="pq"><i>PQ</i><strong>пластохинон</strong></button>
+          <button class="object b6f" data-key="b6f"><i aria-hidden="true"></i><strong>цитохромный<br>комплекс</strong></button>
+          <button class="object courier pc" data-key="pc"><i>PC</i><strong>пластоцианин</strong></button>
+          <button class="object photosystem ps1" data-key="ps1"><span class="antenna a1"></span><span class="antenna a2"></span><span class="antenna a3"></span><i class="core">P700</i><strong>Фотосистема I</strong></button>
+          <button class="object fd" data-key="fd"><i>Fd</i><strong>ферредоксин</strong></button>
+          <button class="object fnr" data-key="fnr"><i>FNR</i><strong>НАДФ⁺-редуктаза</strong></button>
+          <button class="object atpase" data-key="atpase"><i></i><strong>АТФ-синтаза</strong></button>
+
+          <!-- Свет и электронная стрелка лежат поверх объектов схемы. -->
+          <svg class="diagram-overlay" viewBox="0 0 1000 590" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <marker id="arrowRedRoute" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d04f48"/></marker>
+              <marker id="arrowGoldRoute" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#efb542"/></marker>
+            </defs>
+            <path class="light-path" d="M94 96L150 173M104 97L155 175" marker-end="url(#arrowGold)"/>
+            <path class="light-path second" d="M435 98L470 173M445 98L477 175" marker-end="url(#arrowGold)"/>
+            <text x="46" y="130" class="light-word">Свет</text><text x="409" y="130" class="light-word">Свет</text>
+            <path class="electron-flow" d="M165 226C190 206 217 210 250 225C270 232 290 230 320 228C345 225 370 220 390 226C415 234 445 230 470 226C500 228 526 185 550 170C575 170 605 153 630 150C635 105 645 70 660 54" marker-end="url(#arrowBlue)"/>
+            <path class="water-proton-flow" d="M145 323C188 331 224 360 278 345" marker-end="url(#arrowRedRoute)"/>
+            <path class="proton-route" d="M350 405C425 385 510 370 590 342C660 316 716 298 760 268C773 228 772 172 760 112" marker-end="url(#arrowRedRoute)"/>
+            <path class="nadp-charge-flow" d="M698 54H720" marker-end="url(#arrowEnergy)"/>
+            <path class="atp-charge-flow" d="M742 140H798" marker-end="url(#arrowGoldRoute)"/>
+          </svg>
+
+          <div class="electron e1">e⁻</div><div class="electron e2"></div><div class="electron e3"></div>
+          <div class="water"><b>H₂O</b><b>H₂O</b></div>
+          <div class="oxygen">O₂</div>
+          <div class="protons"><i>H⁺</i><i>H⁺</i><i>H⁺</i><i>H⁺</i><i>H⁺</i><i>H⁺</i></div>
+          <div class="protons extra-protons"><i>H⁺</i><i>H⁺</i></div>
+          <div class="nadp"><span>НАДФ⁺</span><b>НАДФ·Н</b></div>
+          <div class="atp-product"><span>АДФ + Фᵢ</span><b>АТФ</b></div>
+        </div>
+
+      </section>
+      <footer class="legend-section">
+        <div class="legend-grid">
+        <span><i class="dot electron-dot"></i> электрон</span><span><i class="dot proton-dot"></i> протон H⁺</span><span><i class="dot chlorophyll-dot"></i> хлорофилл</span><span><i class="dot pigment-dot"></i> пигменты-антенны</span><span><i class="dot energy-dot"></i> запасённая энергия</span><span><i class="zigzag">〰</i> солнечный свет</span>
+        </div>
+        <p>Нажми на объект схемы, чтобы узнать, что он делает.</p>
+      </footer>
+    </section>
+  </main>
+
+  <div class="object-card" id="objectCard" hidden><button id="closeCard" aria-label="Закрыть">×</button><p id="objectType"></p><h3 id="objectName"></h3><p id="objectText"></p><code id="objectEquation"></code></div>
+  <script src="./static/app.js?v=6"></script>
+</body>
+</html>

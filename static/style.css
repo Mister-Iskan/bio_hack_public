@@ -1,0 +1,113 @@
+:root {
+  --ink: #17382c;
+  --muted: #65756d;
+  --line: #d9e1dc;
+  --wash: #edf5f0;
+  --electron: #2f9bd2;
+  --proton: #d05d52;
+  --purple: #664174;
+  --purple-dark: #4c3159;
+  --membrane: #ddb439;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 16px/1.6 Arial, sans-serif; }
+
+.stand { max-width: 860px; margin: 64px auto; padding: 0 12px; }
+.stand-card { border: 1px solid var(--line); border-radius: 24px; padding: 34px 24px 26px; box-shadow: 0 1px 3px #17382c08; }
+.stand-card header { margin-bottom: 22px; }
+.stand-card h1 { margin: 0 0 16px; font-size: 26px; line-height: 1.2; letter-spacing: -.7px; }
+.definition { max-width: 720px; margin: 0; color: #56665e; font-size: 15px; line-height: 1.7; }
+.definition b { color: var(--ink); }
+
+.controls { display: flex; align-items: end; gap: 8px; }
+.controls button { height: 41px; padding: 0 14px; border: 1px solid #dfe6e1; border-radius: 9px; background: #fff; color: var(--ink); font: 15px Arial, sans-serif; cursor: pointer; }
+.controls button:hover:not(:disabled) { background: #f4f8f5; }
+.controls button:disabled { color: #c5ceca; }
+.controls .play { border-color: var(--ink); background: var(--ink); color: #fff; }
+.controls .play:hover { background: #24533f; }
+.path-select { display: flex; flex: 1; min-width: 180px; flex-direction: column; gap: 4px; text-align: center; font-size: 13px; color: var(--ink); }
+.path-select select { width: 100%; height: 41px; border: 1px solid #d8e1dc; border-radius: 9px; background: #fff; padding: 0 12px; color: var(--ink); font: 15px Arial, sans-serif; }
+
+.stage-picker { margin: 18px 0 13px; padding: 15px 17px 13px; border-radius: 13px; background: var(--wash); }
+.stage-picker div { height: 22px; margin-bottom: 7px; font-size: 14px; }
+.stage-picker b { font-weight: 700; }
+.stage-picker input { display: block; width: 100%; height: 18px; margin: 0; appearance: none; background: transparent; }
+.stage-picker input::-webkit-slider-runnable-track { height: 6px; border: 1px solid #c9d3ce; border-radius: 10px; background: linear-gradient(to right, #26785e 0 var(--fill, 0%), #fff var(--fill, 0%) 100%); }
+.stage-picker input::-webkit-slider-thumb { width: 17px; height: 17px; margin-top: -6.5px; appearance: none; border: 1px solid #b9d5c9; border-radius: 50%; background: #26785e; }
+.stage-picker input::-moz-range-track { height: 6px; border: 1px solid #c9d3ce; border-radius: 10px; background: #fff; }
+.stage-picker input::-moz-range-thumb { width: 17px; height: 17px; border: 1px solid #b9d5c9; border-radius: 50%; background: #26785e; }
+
+.step-copy > b { font-size: 15px; }
+.step-copy > div { min-height: 74px; margin-top: 12px; padding: 15px 17px; border-radius: 13px; background: var(--wash); }
+.step-copy p { margin: 0; color: #30463a; font-size: 15px; font-weight: 600; line-height: 1.55; }
+.step-copy code { display: block; margin-top: 7px; color: #315f4b; font: 600 13px Arial, sans-serif; }
+
+.diagram-section { margin-top: 25px; }
+.diagram-label { margin: 0 0 11px; text-align: center; color: #53645c; font-size: 13px; }
+
+/* Учебниковая схема: мембрана тилакоида сворачивается в U-образную петлю. */
+.textbook-model { position: relative; width: 100%; min-height: 430px; aspect-ratio: 1000 / 590; overflow: hidden; border: 1px solid #ece6dd; border-radius: 11px; background: #f8f6f0; }
+.model-art { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; }
+.model-art .zone-title { fill: #5b5d58; font: 700 16px Arial, sans-serif; letter-spacing: .4px; }
+.model-art .zone-small { fill: #6c6f68; font: 13px Arial, sans-serif; }
+.model-art .lumen-title { fill: #5a534b; font: 700 15px Arial, sans-serif; letter-spacing: .4px; }
+.model-art .light-word { fill: #715d17; font: 700 13px Arial, sans-serif; }
+/* Настоящий билипидный слой: две линии круглых гидрофильных головок и волнистые хвосты между ними. */
+.membrane-outline { fill: none; stroke: #f4f2f8; stroke-linecap: round; stroke-linejoin: round; stroke-width: 64; }
+.phospholipid-layer { pointer-events: none; }
+.phospholipid-head { fill: #d9d6ed; stroke: #5f597a; stroke-width: 1.7; }
+.phospholipid-tail { fill: none; stroke: #6a6483; stroke-width: 1.7; stroke-linecap: round; }
+.light-path { fill: none; stroke: #d4aa26; stroke-linecap: round; stroke-width: 5; }
+.electron-flow, .pump-flow, .water-proton-flow, .proton-route, .nadp-charge-flow, .atp-charge-flow { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.electron-flow { stroke: var(--electron); stroke-width: 7; stroke-dasharray: 11 10; opacity: .18; }
+.nadp-charge-flow, .atp-charge-flow { stroke: #efb542; stroke-width: 4; opacity: 0; }
+.pump-flow { stroke: var(--proton); stroke-width: 5; stroke-dasharray: 7 8; opacity: .2; }.water-proton-flow, .proton-route { stroke: var(--proton); stroke-width: 5; opacity: 0; }
+
+.object { position: absolute; z-index: 5; border: 0; background: transparent; color: #2d2931; font-family: Arial, sans-serif; cursor: pointer; transform: translateX(-50%); }
+.object strong { display: block; margin-top: 5px; color: #2e2b31; font-size: 11px; font-weight: 700; line-height: 1.18; text-align: center; white-space: nowrap; }
+
+.photosystem { top: 20%; width: 112px; height: 122px; }
+.ps2 { left: 14%; }.ps1 { left: 47%; }
+.photosystem .core { position: absolute; z-index: 5; top: 97px; left: 42px; width: 29px; height: 17px; padding: 0; border: 2px solid #176e46; border-radius: 50%; background: #36a867; color: transparent; box-shadow: 11px 0 0 -2px #36a867; font-size: 0; font-style: normal; }
+.photosystem .core::before, .photosystem .core::after { display: none; }
+.antenna { position: absolute; display: block; border: 2px solid #315045; border-radius: 0; box-shadow: none; }
+.antenna::after { display: none; }
+/* Три яруса настоящей воронки: широкий приём света и узкий выход к реакционному центру. */
+.a1 { z-index: 4; top: 3px; left: 12px; width: 88px; height: 48px; background: linear-gradient(to bottom, #ffc485 0 24%, #f5a35e 25% 100%); clip-path: polygon(4% 8%, 96% 8%, 72% 100%, 28% 100%); }
+.a1::before { content: ''; position: absolute; top: 1px; left: 2px; width: 80px; height: 18px; border: 2px solid #315045; border-radius: 50%; background: #ffd39e; box-shadow: inset 0 5px #ef9a57; }
+.a2 { z-index: 3; top: 42px; left: 25px; width: 63px; height: 39px; background: linear-gradient(to bottom, #c2ecc7, #69c684); clip-path: polygon(5% 0, 95% 0, 70% 100%, 30% 100%); }
+.a3 { z-index: 2; top: 72px; left: 35px; width: 43px; height: 31px; background: linear-gradient(to bottom, #62c77f 0 47%, #258f59 48% 100%); clip-path: polygon(8% 0, 92% 0, 66% 100%, 34% 100%); }
+.a3::before { content: ''; position: absolute; top: 14px; right: 3px; left: 3px; display: block; height: 2px; background: #2c7550; }.a3::after { display: none; }
+.photosystem strong { position: absolute; top: -24px; left: 50%; width: 146px; margin: 0; transform: translateX(-50%); }
+
+.oec { top: 43%; left: 16%; width: 58px; }.oec i { display: block; height: 30px; padding-top: 7px; border: 2px solid #3c2a4d; border-radius: 10px; background: var(--purple-dark); color: #fff; font: 700 10px Arial; }.oec strong { display: none; }
+.courier { width: 64px; }.courier i { display: block; width: 46px; height: 46px; margin: auto; padding-top: 14px; border: 3px solid #3d2b4a; border-radius: 50%; background: #634574; color: #fff; box-shadow: inset 0 0 0 5px #84608e; font: 700 11px Arial; }
+/* Переносчики образуют компактную связку сразу после ФСII: PQ → b6f → PC. */
+.pq, .pc { top: 29.5%; }.pq { left: 25%; }.pc { left: 39%; }
+.pq strong { position: relative; left: -22px; }.pc strong { position: relative; left: 20px; }
+.b6f { top: 27.5%; left: 32%; width: 86px; }.b6f i { display: block; width: 76px; height: 92px; margin: auto; padding-top: 31px; border: 3px solid #382346; border-radius: 42% 42% 23% 23%; background: linear-gradient(90deg, #563565, #754a7b 47%, #563565); color: #f4cb4f; box-shadow: inset 0 0 0 7px #68436f; font: 700 23px Arial; }.b6f strong { margin-top: 4px; }
+
+.fd { top: 27.5%; left: 55%; width: 24px; }.fd i { display: block; width: 14px; height: 14px; margin: auto; padding: 0; border: 2px solid #3c2b4a; border-radius: 50%; background: #654675; color: #fff; font: 700 5px/10px Arial; }.fd strong { display: none; }
+.fnr { top: 21.5%; left: 63%; z-index: 10; width: 70px; }.fnr i { display: block; width: 54px; height: 43px; margin: auto; padding-top: 12px; border: 3px solid #3c2b4a; border-radius: 9px; background: #5e3e6b; color: #fff; font: 700 10px Arial; }.fnr strong { display: none; }
+
+/* F₁ выступает в строму, ножка проходит сквозь мембрану, а F₀ лежит в её билипидном слое. */
+.atpase { top: calc(34.75% - 96px); left: 76%; width: 116px; height: 105px; }.atpase i { position: relative; display: block; width: 39px; height: 62px; margin: auto; border: 3px solid #342144; border-radius: 8px 8px 18px 18px; background: #573968; }.atpase i::before { content: ''; position: absolute; top: -20px; left: -13px; width: 59px; height: 27px; border: 3px solid #342144; border-radius: 50%; background: #684778; }.atpase i::after { content: ''; position: absolute; top: 43px; bottom: auto; left: -25px; width: 83px; height: 52px; border: 3px solid #342144; border-radius: 48%; background: #734c80; }.atpase strong { position: absolute; top: 132px; bottom: auto; left: 50%; transform: translateX(-50%); }
+
+.electron { display: none; }
+.diagram-overlay { position: absolute; inset: 0; z-index: 9; width: 100%; height: 100%; pointer-events: none; }
+.water { position: absolute; z-index: 6; top: 50%; left: 8%; display: flex; gap: 6px; }.water b { display: grid; width: 35px; height: 35px; place-items: center; border: 2px solid #257cad; border-radius: 50%; background: #2e9dd2; color: #fff; font-size: 9px; }
+.oxygen { position: absolute; z-index: 6; top: 50%; left: 18%; display: none; width: 40px; height: 40px; place-items: center; border: 2px solid #b33939; border-radius: 50%; background: #e05450; color: #fff; font: 700 12px/1 Arial; text-align: center; }
+.protons { position: absolute; z-index: 6; top: 53%; left: 29%; display: flex; flex-wrap: wrap; gap: 6px; width: 82px; }.protons i { display: none; width: 25px; height: 25px; border: 2px solid #ad3a36; border-radius: 50%; background: #e0534e; color: #fff; font: 700 9px/21px Arial; text-align: center; font-style: normal; }.extra-protons { top: calc(40% - 4px); left: 58%; width: 58px; }
+.nadp { position: absolute; z-index: 6; top: 5%; left: calc(66% - 34px); display: flex; align-items: center; gap: 22px; font-size: 10px; font-weight: 700; }.nadp span, .nadp b, .atp-product span, .atp-product b { display: block; margin-bottom: 4px; padding: 6px 8px; border: 2px solid #4d3b52; border-radius: 3px; background: #f1e9e7; color: #442e4d; white-space: nowrap; }.nadp span, .nadp b { margin-bottom: 0; }.nadp b, .atp-product b { display: none; background: #efb542; }
+.atp-product { position: absolute; z-index: 10; top: 20.5%; left: calc(76% - 78px); display: flex; align-items: center; gap: 45px; font-size: 10px; font-weight: 700; }.atp-product span, .atp-product b { margin: 0; }
+
+.legend-section { padding-top: 17px; color: #506259; font-size: 13px; }.legend-section p { margin: 13px 0 0; }.legend-grid { display: flex; flex-wrap: wrap; gap: 9px 19px; }.legend-grid span { display: flex; align-items: center; gap: 5px; }.dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; }.electron-dot { background: var(--electron); }.proton-dot { background: var(--proton); }.chlorophyll-dot { background: #6eb262; }.pigment-dot { border: 1px solid #3b7241; background: #7bb95d; }.energy-dot { background: #efb542; }.zigzag { color: #d4aa26; font-size: 18px !important; font-weight: 800 !important; }
+
+.object.active { filter: drop-shadow(0 0 8px #e7d23e); transform: translateX(-50%); }.step-1 .ps2 .core, .step-4 .ps1 .core { animation: flash 1.2s infinite; }.step-2 .water { display: flex; }.step-2 .oxygen { display: grid; animation: rise 2.3s infinite; }.step-2 .protons i, .step-2 .water-proton-flow { display: block; opacity: 1; }.step-3 .electron-flow, .step-4 .electron-flow, .step-5 .electron-flow { opacity: 1; animation: dash 1.2s linear infinite; }.step-3 .pump-flow { opacity: 1; animation: dash 1s linear infinite; }.step-3 .protons i, .step-6 .protons i { display: block; }.step-5 .nadp span { display: none; }.step-5 .nadp b { display: block; animation: flash 1.4s infinite; }.step-6 .atp-charge-flow { opacity: 1; animation: dash 1s linear infinite; }.step-6 .proton-route { opacity: 1; }.step-6 .atp-product span, .step-6 .atp-product b { display: block; }.step-6 .atp-product b { animation: flash 1.4s infinite; }.overview .electron-flow, .overview .pump-flow, .overview .water-proton-flow, .overview .proton-route, .overview .nadp-charge-flow, .overview .atp-charge-flow { opacity: 1; animation: dash 1.2s linear infinite; }.overview .oxygen { display: grid; }.overview .protons i, .overview .nadp b, .overview .atp-product b { display: block; }.overview .water { display: flex; }
+
+@keyframes electron { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(38px); } } @keyframes flash { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.3) drop-shadow(0 0 8px #ffe765); } } @keyframes dash { to { stroke-dashoffset: -42; } } @keyframes rise { 0% { transform: translateY(16px); opacity: 0; } 30%, 80% { opacity: 1; } 100% { transform: translateY(-34px); opacity: 0; } }
+
+.object-card { position: fixed; z-index: 30; right: 25px; bottom: 25px; width: min(350px, calc(100vw - 32px)); padding: 22px; border: 1px solid var(--line); border-radius: 16px; background: #fff; color: var(--ink); box-shadow: 0 16px 45px #17382c22; }.object-card button { position: absolute; top: 7px; right: 11px; border: 0; background: transparent; color: inherit; font-size: 23px; cursor: pointer; }.object-card p { color: #52645b; font-size: 14px; line-height: 1.5; }.object-card #objectType { color: #567e6b; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; }.object-card h3 { margin: 5px 0; font-size: 20px; line-height: 1.3; }.object-card code { color: #396451; font: 600 12px Arial; }.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+
+@media (max-width: 600px) { .stand { margin: 14px auto; padding: 0 7px; }.stand-card { padding: 26px 14px 22px; border-radius: 18px; }.stand-card h1 { font-size: 23px; }.definition { font-size: 14px; }.top-controls { flex-wrap: wrap; }.path-select { order: 2; flex-basis: 100%; margin-top: 6px; }.diagram-section { margin-right: -4px; margin-left: -4px; }.textbook-model { min-height: 315px; }.object strong { font-size: 7px; }.photosystem { width: 82px; height: 70px; }.photosystem .core { top: 25px; left: 27px; width: 30px; height: 28px; padding-top: 8px; font-size: 7px; }.antenna { top: 17px; width: 32px; height: 45px; border-width: 3px; }.antenna::after { display: none; }.a3 { left: 28px; width: 27px; height: 19px; }.photosystem strong { top: -18px; width: 100px; font-size: 8px; }.oec { width: 44px; }.oec i { height: 24px; padding-top: 5px; font-size: 7px; }.courier i { width: 33px; height: 33px; padding-top: 9px; font-size: 8px; }.b6f { width: 60px; }.b6f i { width: 52px; height: 65px; padding-top: 20px; font-size: 17px; }.fd { width: 22px; }.fd i { width: 12px; height: 12px; padding: 0; border-width: 2px; font-size: 4px; line-height: 8px; }.fnr { width: 66px; }.fnr i { width: 55px; height: 32px; padding-top: 7px; font-size: 7px; }.atpase { top: calc(34.75% - 79px); width: 77px; height: 75px; }.atpase i { width: 28px; height: 46px; }.atpase i::before { top: -14px; left: -10px; width: 47px; height: 21px; }.atpase i::after { bottom: -27px; left: -19px; width: 66px; height: 43px; }.atpase strong { top: 94px; }.electron { width: 16px; height: 16px; font-size: 7px; line-height: 12px; }.water b { width: 26px; height: 26px; font-size: 7px; }.oxygen { width: 29px; height: 29px; font-size: 9px; line-height: 25px; }.protons { width: 61px; gap: 4px; }.protons i { width: 19px; height: 19px; border: 2px solid #ad3a36; border-radius: 50%; background: #e0534e; color: #fff; font: 700 9px/21px Arial; text-align: center; font-style: normal; }.nadp, .atp-product { font-size: 7px; }.nadp span, .nadp b, .atp-product span, .atp-product b { padding: 3px 4px; }.legend-grid { gap: 8px 12px; font-size: 12px; } }
