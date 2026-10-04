@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Световая фаза фотосинтеза</title>
-  <link rel="stylesheet" href="./static/style.css?v=46" />
+  <link rel="stylesheet" href="./static/style.css?v=47" />
 </head>
 <body>
   <main class="stand">
@@ -78,7 +78,13 @@
             <path class="light-path" d="M94 96L150 173M104 97L155 175" marker-end="url(#arrowGold)"/>
             <path class="light-path second" d="M435 98L470 173M445 98L477 175" marker-end="url(#arrowGold)"/>
             <text x="46" y="130" class="light-word">Свет</text><text x="409" y="130" class="light-word">Свет</text>
-            <path class="electron-flow" d="M165 226C190 206 217 210 250 225C270 232 290 230 320 228C345 225 370 220 390 226C415 234 445 230 470 226C500 228 526 185 550 170C575 170 605 153 630 150C635 105 645 70 660 54" marker-end="url(#arrowBlue)"/>
+            <path id="electronTrack" class="electron-flow" d="M165 226C190 206 217 210 250 225C270 232 290 230 320 228C345 225 370 220 390 226C415 234 445 230 470 226C500 228 526 185 550 170C575 170 605 153 630 150C635 105 645 70 660 54" marker-end="url(#arrowBlue)"/>
+            <g class="electron-particles">
+              <g class="electron-particle"><circle r="12"/><text y="4">e⁻</text><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#electronTrack"/></animateMotion></g>
+              <g class="electron-particle"><circle r="12"/><text y="4">e⁻</text><animateMotion begin="-1.2s" dur="3.6s" repeatCount="indefinite"><mpath href="#electronTrack"/></animateMotion></g>
+              <g class="electron-particle"><circle r="12"/><text y="4">e⁻</text><animateMotion begin="-2.4s" dur="3.6s" repeatCount="indefinite"><mpath href="#electronTrack"/></animateMotion></g>
+            </g>
+            <path class="pump-flow" d="M320 253C320 275 320 292 320 313" marker-end="url(#arrowRedRoute)"/>
             <path class="water-proton-flow" d="M145 323C188 331 224 360 278 345" marker-end="url(#arrowRedRoute)"/>
             <path class="proton-route" d="M350 405C425 385 510 370 590 342C660 316 716 298 760 268C773 228 772 172 760 112" marker-end="url(#arrowRedRoute)"/>
             <path class="nadp-charge-flow" d="M698 54H720" marker-end="url(#arrowEnergy)"/>
